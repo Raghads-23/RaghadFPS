@@ -19,8 +19,5 @@ public class WeaponController : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.linearVelocity = firePoint.forward * bulletSpeed;
-
-        // تدمير الرصاصة بعد 3 ثوانٍ تلقائيًا
-        Destroy(bullet, 3f);
     }
 }
