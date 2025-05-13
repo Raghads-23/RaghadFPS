@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public float damage = 20f; // مقدار الضرر الذي تسببه الرصاصة
+    public float damage = 5f; // مقدار الضرر الذي تسببه الرصاصة
 
     void Start()
     {

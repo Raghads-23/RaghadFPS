@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     public float health = 100f; // قيمة الصحة الأساسية
     private float maxHealth;
+    public Animator animator; 
     public HealthBarController healthBar; // رابط إلى HealthBarController
 
 
@@ -38,19 +40,42 @@ public class EnemyController : MonoBehaviour
         // تحديث الـ Health Bar
         if (healthBar != null)
         {
+            Debug.Log("Damage");
             healthBar.UpdateHealthBar(health / maxHealth);
+            animator.SetTrigger("Damage");
         }
         
         if (health <= 0)
         {
+            //animator.SetTrigger("Die");
             Die();
         }
     }
 
     // دالة الموت عند انتهاء الصحة
     void Die()
+{
+    Debug.Log("Die");
+    animator.SetTrigger("Die");
+    StartCoroutine(WaitForAnimationToFinish());
+}
+
+private IEnumerator WaitForAnimationToFinish()
+{
+    AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+    // ننتظر لين يدخل فعلاً في حالة الموت
+    while (!stateInfo.IsName("Die"))
     {
-        Debug.Log("Enemy Died!");
-        Destroy(gameObject);
+        yield return null;
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
     }
+
+    // ننتظر لين ينتهي الأنيميشن
+    yield return new WaitForSeconds(stateInfo.length);
+    
+    Destroy(gameObject);
+}
+
+
 }
