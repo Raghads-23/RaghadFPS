@@ -8298,7 +8298,7 @@ GameObject:
   - component: {fileID: 350979332}
   - component: {fileID: 350979333}
   m_Layer: 0
-  m_Name: LightPoints2
+  m_Name: safeZone2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19344,7 +19344,7 @@ GameObject:
   - component: {fileID: 763798762}
   - component: {fileID: 763798763}
   m_Layer: 0
-  m_Name: LightPoints4
+  m_Name: safeZone4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21078,7 +21078,7 @@ GameObject:
   - component: {fileID: 824499492}
   - component: {fileID: 824499493}
   m_Layer: 0
-  m_Name: LightPoints1
+  m_Name: safeZone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23880,7 +23880,7 @@ GameObject:
   - component: {fileID: 960144500}
   - component: {fileID: 960144501}
   m_Layer: 0
-  m_Name: LightPoints5
+  m_Name: safeZone5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26217,7 +26217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215a352cf29a44183b3af1fc4232081b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1015759103}
   path: {fileID: 748742103}
+  player: {fileID: 1397828319}
+  chaseRange: 5
+  playerInSafeZone: 0
 --- !u!95 &1015759103
 Animator:
   serializedVersion: 7
@@ -26252,6 +26256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be679767f8e74c6cadc4caa713ada59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 1015759101}
 --- !u!1001 &1015895074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31110,7 +31115,7 @@ GameObject:
   - component: {fileID: 1198562770}
   - component: {fileID: 1198562771}
   m_Layer: 0
-  m_Name: LightPoints3
+  m_Name: safeZone3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36616,6 +36621,7 @@ GameObject:
   - component: {fileID: 1397828316}
   - component: {fileID: 1397828315}
   - component: {fileID: 1397828314}
+  - component: {fileID: 1397828320}
   m_Layer: 0
   m_Name: First Person Character
   m_TagString: Player
@@ -36803,6 +36809,19 @@ Transform:
   - {fileID: 674937371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -182.304, z: 0}
+--- !u!114 &1397828320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397828313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543dbedbeb388464f99b6361ec30713c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1015759101}
 --- !u!1 &1398490052
 GameObject:
   m_ObjectHideFlags: 0

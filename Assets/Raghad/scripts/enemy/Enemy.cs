@@ -6,10 +6,17 @@ public class Enemy : MonoBehaviour
 {
     private StateMachine stateMachine;
     private NavMeshAgent agent;
-    private Animator animator; // مرجع للـ Animator
+    public Animator animator; // مرجع للـ Animator
 
     public NavMeshAgent Agent { get => agent; }
     public Path path;
+
+    // chasing
+
+    public Transform player;
+    public float chaseRange = 5f; // المسافة اللي يبدأ فيها العدو يلاحق اللاعب
+    public bool playerInSafeZone = false;
+
 
     void Start()
     {
