@@ -10,11 +10,9 @@ public class LightCycleController : MonoBehaviour
 
     private int currentIndex = 0;
 
-    // لتعقب الأشياء الملتقطة
-    private HashSet<GameObject> pickedUpFirewoods = new HashSet<GameObject>();
-
     void Start()
     {
+        // نطفي كل الأنوار والحطب في البداية
         foreach (Light light in lights)
         {
             if (light != null)
@@ -30,56 +28,40 @@ public class LightCycleController : MonoBehaviour
         StartCoroutine(CycleLights());
     }
 
-    public void AddToPickedUpList(GameObject firewood)
-    {
-        if (!pickedUpFirewoods.Contains(firewood))
-        {
-            pickedUpFirewoods.Add(firewood);
-
-            // تأكد أن الحطب يظل مفعلًا إذا كان ملتقطًا
-            firewood.SetActive(true);
-        }
-    }
-
     IEnumerator CycleLights()
     {
         while (true)
         {
-            // نطفي كل الأنوار
+            // نطفي كل الأنوار للتأكد
             foreach (Light light in lights)
             {
                 if (light != null)
                     light.enabled = false;
             }
 
-            // نطفي كل الحطب **ما عدا الملتقط**
+            // نطفي كل الحطب
             foreach (GameObject firewood in firewoodObjects)
             {
-                if (firewood != null && !pickedUpFirewoods.Contains(firewood))
-                {
-                    firewood.SetActive(false);
-                }
+                if (firewood != null)
+                    firewood.SetActive(false); // إخفاء الحطب
             }
 
-            // نشغل النور الحالي ونظهر الحطب إذا لم يكن ملتقطًا
+            // نشغل النور الحالي
             Light currentLight = lights[currentIndex];
             if (currentLight != null)
             {
                 currentLight.enabled = true;
-
+                
+                // عند تشغيل النور، نظهر الحطب المقابل له
                 if (firewoodObjects.Count > currentIndex)
                 {
-                    GameObject firewood = firewoodObjects[currentIndex];
-
-                    // إذا لم يكن ملتقطًا، نظهره
-                    if (!pickedUpFirewoods.Contains(firewood))
-                    {
-                        firewood.SetActive(true);
-                    }
+                    firewoodObjects[currentIndex].SetActive(true); // إظهار الحطب
                 }
             }
 
             yield return new WaitForSeconds(lightDuration);
+
+            // نروح للنور اللي بعده
             currentIndex = (currentIndex + 1) % lights.Count;
         }
     }

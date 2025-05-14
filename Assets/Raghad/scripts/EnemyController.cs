@@ -8,6 +8,10 @@ public class EnemyController : MonoBehaviour
     public Animator animator; 
     public HealthBarController healthBar; // رابط إلى HealthBarController
 
+    public AudioSource monsterScream;
+    public AudioSource monsterDie;
+
+
 
 
         private void Start()
@@ -38,7 +42,7 @@ public class EnemyController : MonoBehaviour
 {
     if (other.CompareTag("Player"))
     {
-        other.GetComponent<PlayerHealth>()?.PlayerTakeDamage(20f);
+        other.GetComponent<PlayerHealth>()?.PlayerTakeDamage(10f);
     }
 }
 
@@ -56,6 +60,7 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Damage");
             healthBar.UpdateHealthBar(health / maxHealth);
+            monsterScream.Play();
             animator.SetTrigger("Damage");
         }
         
@@ -71,6 +76,7 @@ public class EnemyController : MonoBehaviour
 {
     Debug.Log("Die");
     animator.SetTrigger("Die");
+    monsterDie.Play();
     StartCoroutine(WaitForAnimationToFinish());
 }
 
