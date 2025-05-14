@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Raghad/winScene.unity
     guid: 31f88b6ed561341f0a478a66b2d998fb
+  - enabled: 1
+    path: Assets/Raghad/loseScene.unity
+    guid: 4aa5854b8613c4b47bee128707ef4829
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -15,7 +15,7 @@ public class Firewood : MonoBehaviour
         if (other.CompareTag("Player")) // تأكد أن اللاعب هو من لمس الحطب
         {
             gameManager.AddPoints(points); // أضف النقاط
-            Destroy(gameObject); // دمر الحطب
+            //Destroy(gameObject); // دمر الحطب
         }
     }
 }

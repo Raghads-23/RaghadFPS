@@ -1,28 +1,28 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
-public class changeSceneWhenhit : MonoBehaviour
+public class changeSceneWhenHit : MonoBehaviour
 {
-    public string sceneToLoad = "winScene"; 
-    private GameManager gameManager;
+    public string sceneToLoad = "winScene"; // اسم المشهد الذي سيتم التحويل له
+    private FirewoodCollector firewoodCollector;
 
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        firewoodCollector = FindObjectOfType<FirewoodCollector>();
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (gameManager != null && gameManager.GetScore() == 5)
+            if (firewoodCollector != null && firewoodCollector.GetFirewoodCount() == 5)
             {
-                Debug.Log("Player Hit");
+                Debug.Log("✅ تم جمع كل الحطب، الانتقال إلى المشهد التالي!");
                 SceneManager.LoadScene(sceneToLoad);
             }
             else
             {
-                Debug.Log("❌ لم يتحقق الشرط: النقاط أقل من 5");
+                Debug.Log("❌ لم يتحقق الشرط: عدد الحطب أقل من 5");
             }
         }
     }

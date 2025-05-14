@@ -29,7 +29,21 @@ public class EnemyController : MonoBehaviour
                 Destroy(collision.gameObject); // تدمير الرصاصة عند الاصطدام
             }
         }
+
     }
+
+
+
+    private void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player"))
+    {
+        other.GetComponent<PlayerHealth>()?.PlayerTakeDamage(20f);
+    }
+}
+
+
+    
 
     // دالة لتقليل الصحة
     public void TakeDamage(float damage)
@@ -47,7 +61,7 @@ public class EnemyController : MonoBehaviour
         
         if (health <= 0)
         {
-            //animator.SetTrigger("Die");
+        
             Die();
         }
     }
