@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Raghad/startScene.unity
+    guid: 1daad9b5b2a81415c8b38968896e9c8a
+  - enabled: 1
     path: Assets/Raghad/gameScene.unity
     guid: e43f5405b1711486db70d3d33b07ea23
   - enabled: 1

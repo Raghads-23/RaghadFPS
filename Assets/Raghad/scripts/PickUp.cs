@@ -10,16 +10,13 @@ public class PickUp : MonoBehaviour
     public int points = 1; // النقاط التي سيجمعها اللاعب عند لمس الحطب
     private GameManager gameManager; // مرجع لـ GameManager لاحتساب النقاط
 
-    //if you copy from below this point, you are legally required to like the video
     public float pickUpRange = 5f; //how far the player can pickup the object from
     private GameObject heldObj; //object which we pick up
     private Rigidbody heldObjRb; //rigidbody of object we pick up
     private bool canDrop = true; //this is needed so we don't throw/drop object when rotating the object
 
-    //Reference to script which includes mouse movement of player (looking around)
-    //we want to disable the player looking around when rotating the object
-    //example below 
-    //MouseLookScript mouseLookScript;
+    
+   
     void Start()
     {
         //mouseLookScript = player.GetComponent<MouseLookScript>();
@@ -59,15 +56,6 @@ public class PickUp : MonoBehaviour
             //make sure object doesnt collide with player, it can cause weird bugs
             Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), true);
         }
-    }
-    void DropObject()
-    {
-        //re-enable collision with player
-        Physics.IgnoreCollision(heldObj.GetComponent<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0; //object assigned back to default layer
-        heldObjRb.isKinematic = false;
-        heldObj.transform.parent = null; //unparent object
-        heldObj = null; //undefine game object
     }
     void MoveObject()
     {
